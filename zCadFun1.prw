@@ -68,6 +68,8 @@ Static Function ModelDef()
 	Local nModel   := 1
 	Local oStZCO := FWFormStruct( nModel, "ZCO" )	
 
+
+	Default cCadastro := "Colaborador"
 	
 
 	//Innstaciando o modelo, não é recomendado colocar nome da user function (por causa do u_), respeitando 10 caracteres

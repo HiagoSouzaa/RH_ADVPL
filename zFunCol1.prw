@@ -9,7 +9,7 @@
 
 #Include 'protheus.ch'
 #Include 'totvs.ch'
-#Include 'parmtype.ch'
+#Include 'parmtype.ch' 
 #Include 'msobject.ch'
 #include 'FWMBrowse.ch'
 #Include "FWMVCDEF.CH"

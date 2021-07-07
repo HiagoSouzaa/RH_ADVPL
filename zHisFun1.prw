@@ -54,6 +54,8 @@ Static Function MenuDef()
 	Local aRot		   := {}
 	Local nAcessoTotal := 0
 
+	
+
 	    ADD  OPTION aRot TITLE "Visualizar" ACTION "VIEWDEF.zHisFun1" OPERATION MODEL_OPERATION_VIEW   ACCESS nAcessoTotal //"Visualizar"
 
        If  FWIsAdmin()  
@@ -72,6 +74,8 @@ Static Function ModelDef()
 	Local oModel   := Nil
 	Local nModel   := 1
 	Local oStZHF := FWFormStruct( nModel, "ZHF" )	
+
+	Default cCadastro := "função do Colaborador"
 
 	
 

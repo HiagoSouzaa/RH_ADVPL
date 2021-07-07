@@ -38,9 +38,13 @@ Return Nil
  
 Static Function MenuDef()
 	Local aRot := {}
+	Local nAcessoTotal := 0
+
+	
 	
 	//Adicionando opções
-	ADD OPTION aRot TITLE 'Visualizar' ACTION 'VIEWDEF.zRhMain' OPERATION MODEL_OPERATION_VIEW ACCESS 0
+	ADD OPTION aRot TITLE 'Gerenciar Colaborador'       ACTION 'VIEWDEF.zRhMain' OPERATION MODEL_OPERATION_VIEW ACCESS nAcessoTotal
+	ADD OPTION aRot TITLE "Incluir novo colaborador"    ACTION "VIEWDEF.zCadFun1" OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal
 
 Return aRot
 
@@ -55,15 +59,18 @@ Static Function ModelDef()
 	Local aRelFilho2 := {}
 	Local aRelFilho3 := {}
 
-	
-
     //Criando o modelo
 	oModel := MPFormModel():New('zRhMainM')
 	oModel:AddFields('ZCO_MASTER', /*cOwner*/, oStPai)
 
+	oStFilho2:SetProperty("ZHF_NOME",MODEL_FIELD_INIT,'')
+	oStFilho2:SetProperty("ZHF_NOMEFU",MODEL_FIELD_INIT,{||POSICIONE("ZCF",1,FWXFILIAL("ZCF")+ZHF->ZHF_FUNCAO,"ZCF_DESC")})           
+	
 	oStFilho3:SetProperty("ZHE_NOME",MODEL_FIELD_INIT,'')
 	oStFilho3:SetProperty("ZHE_NOMEXA",MODEL_FIELD_INIT, {||POSICIONE("SX5",1,FWXFILIAL("SX5")+"ZE"+ZHE->ZHE_TPEXAM,"X5_DESCRI")})
-
+	
+	
+	
     //Criando as grids dos filhos
 	oModel:AddGrid('ZHS_FILHO1', 'ZCO_MASTER', oStFilho1)
 	oModel:AddGrid('ZHF_FILHO2', 'ZCO_MASTER', oStFilho2)
@@ -146,6 +153,8 @@ Static Function ModelDef()
 	oView:SetOwnerView('VIEW_FILHO1', 'ITENS_FILHO01')
 	oView:SetOwnerView('VIEW_FILHO2', 'ITENS_FILHO02')
 	oView:SetOwnerView('VIEW_FILHO3', 'ITENS_FILHO3')
+
+	//oView:SetViewAction( 'BUTTONCANCEL'    ,{ |oView|  u_fTeste(oView) } )	
 	
 	oStFilho1:RemoveField("ZHS_FILIAL")
 	oStFilho1:RemoveField("ZHS_CPF")
@@ -154,9 +163,13 @@ Static Function ModelDef()
 	oStFilho2:RemoveField("ZHF_CPF")
 	oStFilho2:RemoveField("ZHF_NOME")
 
+					  
 	oStFilho3:RemoveField("ZHE_NOME")
 	oStFilho3:RemoveField("ZHE_CPF")
 	oStFilho3:RemoveField("ZHE_FILIAL")
 
+		
+
 	
 Return oView
+
