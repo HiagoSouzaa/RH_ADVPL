@@ -2,19 +2,7 @@
 #Include "TopConn.ch"
 	
 /*/{Protheus.doc} zRelCol
-Relatório - Comprado no periodo por produto / Utilizado para envio de informações ao IBAMA anualmente.          
-@author Súlivan Simões Silva - sulivansimoes@gmail.com
-@since 19/02/2019 [Data da criação]
-@version 1.1
-
-@obs : MANUTENÇÕES FEITAS NO CÓDIGO:
-     --------------------------------------------------------------------------------------------					
-     Versão gerada: 1.1
-     Data: 20/08/2020
-     Responsável: Súlivan
-     Log:* Ajustes na escrita do código, como tirar parametros chumbados direto na query
-     	 * Melhorado a escrita da query
-         * Trocado funções antigas por novas.
+Relatório - Gera informacões sobre os colaboradores
     --------------------------------------------------------------------------------------------    	
 /*/	
 User Function zRelCol()
