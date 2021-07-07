@@ -38,13 +38,21 @@ Return Nil
  
 Static Function MenuDef()
 	Local aRot := {}
+	Local aSubRot := {}
 	Local nAcessoTotal := 0
 
 	
 	
 	//Adicionando opções
 	ADD OPTION aRot TITLE 'Gerenciar Colaborador'       ACTION 'VIEWDEF.zRhMain' OPERATION MODEL_OPERATION_VIEW ACCESS nAcessoTotal
-	ADD OPTION aRot TITLE "Incluir novo colaborador"    ACTION "VIEWDEF.zCadFun1" OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal
+	ADD OPTION aRot TITLE "Incluir novo colaborador"    ACTION "VIEWDEF.zCadFun1"OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal
+
+	
+	ADD OPTION aSubRot TITLE "Relatório Colaboradores"  ACTION "u_zRelCol"OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal
+	ADD OPTION aSubRot TITLE "Relatório de exames "     ACTION "u_zRelExa"OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal
+	
+	ADD OPTION aRot    TITLE 'Relatórios'               ACTION aSubRot OPERATION MODEL_OPERATION_VIEW ACCESS nAcessoTotal
+	
 
 Return aRot
 
