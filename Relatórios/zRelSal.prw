@@ -2,7 +2,7 @@
 #Include "TopConn.ch"
 	
 /*/{Protheus.doc} zRelCol
-Relatório - Gera informacoes que gera exames dos colaboradores 
+Relatório - Gera informacoes que gera os salarios dos colaboradores 
     --------------------------------------------------------------------------------------------    	
 /*/	
 User Function zRelSal()
