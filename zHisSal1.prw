@@ -23,6 +23,7 @@ User Function zHisSal1()
     Local aArea   := GetArea()
     Local cFunBkp := FunName()
     Local oBrowse := nil
+	Local nOffWaring := 1
 	
     
     private cCadastro := "Historico de Salario"
@@ -45,6 +46,12 @@ User Function zHisSal1()
     
     //Voltando o nome da função
     SetFunName(cFunBkp)
+	
+	If( nOffWaring == 0 )
+		MenuDef()
+		ModelDef()
+		ViewDef()
+	EndIf
        
     FreeObj( oBrowse )    
     RestArea(aArea)
@@ -94,7 +101,7 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZZ1  := ZHS->(DbStruct())
+	Local aStruZHS  := ZHS->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZHISSAL1") 

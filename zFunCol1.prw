@@ -24,6 +24,7 @@ User Function zFunCol1()
     Local aArea   := GetArea()
     Local cFunBkp := FunName()
     Local oBrowse := nil
+	Local nOffWaring := 1
 	
     
     private cCadastro := "Função"
@@ -46,6 +47,12 @@ User Function zFunCol1()
     
     //Voltando o nome da função
     SetFunName(cFunBkp)
+
+	If( nOffWaring == 0 )
+		MenuDef()
+		ModelDef()
+		ViewDef()
+	EndIf
        
     FreeObj( oBrowse )    
     RestArea(aArea)
@@ -90,7 +97,7 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZZ1	:= ZCF->(DbStruct())
+	Local aStruZCF	:= ZCF->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZFUNCOL1") 

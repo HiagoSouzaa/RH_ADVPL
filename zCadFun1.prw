@@ -23,6 +23,7 @@ User Function zCadFun1()
     Local aArea   := GetArea()
     Local cFunBkp := FunName()
     Local oBrowse := nil
+	Local nOffWaring := 1
 	
     
     private cCadastro := "Colaborador"
@@ -42,10 +43,17 @@ User Function zCadFun1()
     //Destrói a classe      
     oBrowse:DeActivate()
     oBrowse:Destroy()
+
     
     //Voltando o nome da função
     SetFunName(cFunBkp)
        
+	//Trata warning que ocorre com os fontes mvc
+	If( nOffWaring == 0 )
+		MenuDef()
+		ModelDef()
+		ViewDef()
+	EndIf
     FreeObj( oBrowse )    
     RestArea(aArea)
 return
@@ -90,7 +98,7 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZZ1	:= ZCO->(DbStruct())
+	Local aStruZCO	:= ZCO->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZCADFUN1") 

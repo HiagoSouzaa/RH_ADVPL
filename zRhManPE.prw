@@ -18,9 +18,11 @@ User Function zRhMainM()
 
   
 
-    xRet :=  {{'Salario', 'SALARIO', { || u_ExViewSA() }, 'Este botao inclui salario ' },;
-             {'Funcao'  , 'FUNCAO',  { || u_ExViewFU() }, 'Este botao inclui Funcao  ' },;
-             {'Exame'   , 'EXAME',   { || u_ExViewEX() }, 'Este botao inclui Exame   ' }}
+    xRet :=  {{'Salario', 'SALARIO', 			{ || u_ExViewSA() }, 'Este botao inclui salario ' },;
+             {'Funcao'  , 'FUNCAO',  			{ || u_ExViewFU() }, 'Este botao inclui Funcao  ' },;
+             {'Direito de férias', 'DIREITO DE FERIAS',  { || u_ExViewDF() }, 'Este botao inclui Direito de férias  ' },;
+             {'Gozo de férias', 'GOZO DE FERIAS',  	{ || u_ExViewGF() }, 'Este botao inclui Gozo de férias  ' },;
+             {'Exame'   , 'EXAME',   			{ || u_ExViewEX() }, 'Este botao inclui Exame   ' }}
 
             
 
@@ -128,4 +130,66 @@ User Function ExViewEX()
 	oModelaux:Activate()
 
     
+Return
+
+User Function ExViewDF()
+
+	Local aAutDF := {}
+	Local oModelAux := FWModelActive()
+
+	private aRotina     := {}
+	Private cCadastro   := ""
+	private oModel := StaticCall(zDirFer, ModelDef)
+
+	  If Pergunte("ZRHMANDF", .T., "Incluir Exame",.T.)
+
+		   aAdd(aAutDF, {"ZDF_FILIAL",fwFldGet("ZCO_FILIAL")  ,Nil})
+ 		   aAdd(aAutDF, {"ZDF_CPF"   ,fwFldGet("ZCO_CPF")     ,Nil})
+	       aAdd(aAutDF, {"ZDF_INIAQ" ,MV_PAR01   			   ,Nil})
+	       aAdd(aAutDF, {"ZDF_FIMAQ" ,MV_PAR02   			   ,Nil})
+		 
+
+
+
+		  FWMVCRotAuto(    oModel,;
+                            "ZDF",;
+                            MODEL_OPERATION_INSERT,;
+                            {{"FORMZDF", aAutDF}}  )
+		EndIf	
+
+	//Atualiza a tela 
+	oModelAux:DeActivate()
+	oModelaux:Activate()
+
+Return
+
+User Function ExViewGF()
+
+	Local aAutGF := {}
+	Local oModelAux := FWModelActive()
+
+	private aRotina     := {}
+	Private cCadastro   := ""
+	private oModel := StaticCall(zGozFer, ModelDef)
+
+	  If Pergunte("ZRHMANGF", .T., "Incluir Exame",.T.)
+
+		   aAdd(aAutGF, {"ZGF_FILIAL",fwFldGet("ZCO_FILIAL")  ,Nil})
+ 		   aAdd(aAutGF, {"ZGF_CPF"   ,fwFldGet("ZCO_CPF")     ,Nil})
+	       aAdd(aAutGF, {"ZGF_DTINI" ,MV_PAR01   			   ,Nil})
+	       aAdd(aAutGF, {"ZGF_DTFIM" ,MV_PAR02   			   ,Nil})
+		 
+
+
+
+		  FWMVCRotAuto(    oModel,;
+                            "ZGF",;
+                            MODEL_OPERATION_INSERT,;
+                            {{"FORMZGF", aAutGF}}  )
+		EndIf	
+
+	//Atualiza a tela 
+	oModelAux:DeActivate()
+	oModelaux:Activate()
+
 Return

@@ -23,6 +23,7 @@ User Function zHisFun1()
     Local aArea   := GetArea()
     Local cFunBkp := FunName()
     Local oBrowse := nil
+	Local nOffWaring := 1
 	
     
     private cCadastro := "Histórico de função "
@@ -45,6 +46,12 @@ User Function zHisFun1()
     
     //Voltando o nome da função
     SetFunName(cFunBkp)
+	
+	If( nOffWaring == 0 )
+		MenuDef()
+		ModelDef()
+		ViewDef()
+	EndIf
        
     FreeObj( oBrowse )    
     RestArea(aArea)
@@ -97,7 +104,7 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZZ1	:= ZHF->(DbStruct())
+	Local aStruZHF	:= ZHF->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZHISFUN1") 

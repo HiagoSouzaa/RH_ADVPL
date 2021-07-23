@@ -24,6 +24,7 @@ User Function zHisExa1()
     Local aArea   := GetArea()
     Local cFunBkp := FunName()
     Local oBrowse := nil
+	Local nOffWaring := 1
 	
     
     private cCadastro := "Histórico de Exames "
@@ -46,6 +47,12 @@ User Function zHisExa1()
     
     //Voltando o nome da função
     SetFunName(cFunBkp)
+
+	If( nOffWaring == 0 )
+		MenuDef()
+		ModelDef()
+		ViewDef()
+	EndIf
        
     FreeObj( oBrowse )    
     RestArea(aArea)
@@ -94,7 +101,7 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZZ1	:= ZHE->(DbStruct())
+	Local aStruZHE	:= ZHE->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZHISEXA1") 

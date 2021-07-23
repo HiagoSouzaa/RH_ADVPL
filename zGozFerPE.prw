@@ -46,14 +46,16 @@ Local cCpf      := fwfldGet("ZGF_CPF")
 local nDiaSal   := 0
 Local aDiaRes   := {}
 local aAreaZDF  := {}
+Local oModel := Nil
+local oZDFMod := NIL
 
-Private oModel := StaticCall(zDirFer, ModelDef)
+
 private aRotina     := {}
 
 
 
-    cQryAux += " SELECT ZDF_DIASAL AS ZDF_DIASAL, "
-    cQryAux += " ZDF_FILIAL AS ZDF_FILIAL, "
+    
+    cQryAux += " SELECT ZDF_FILIAL AS ZDF_FILIAL, "
     cQryAux += " ZDF_INIAQ AS ZDF_INIAQ, "
     cQryAux += " ZDF_FIMAQ AS ZDF_FIMAQ, "
     cQryAux += " ZDF_VENFE AS ZDF_VENFE, "
@@ -99,30 +101,41 @@ private aRotina     := {}
 
        EndIf
 
-       
+            oModel := FWLoadModel("zDirFer")
 
-            aAdd(aDiaRes, {"ZDF_FILIAL",(cAliasTmp)->ZDF_FILIAL,Nil})
-            aAdd(aDiaRes, {"ZDF_CPF",(cAliasTmp)->ZDF_CPF,Nil})
-            aAdd(aDiaRes, {"ZDF_INIAQ",(cAliasTmp)->ZDF_INIAQ,Nil})
-            // aAdd(aDiaRes, {"ZDF_FIMAQ",(cAliasTmp)->ZDF_FIMAQ,Nil})
-            // aAdd(aDiaRes, {"ZDF_VENFE",(cAliasTmp)->ZDF_VENFE,Nil})
-            // aAdd(aDiaRes, {"ZDF_LIMIGO",(cAliasTmp)->ZDF_LIMIGO,Nil})
-            aAdd(aDiaRes, {"ZDF_DIASAL",nDiaSal,Nil})
-
-            aAreaZDF:= ZDF->(GetArea())
-            
             dbSelectArea("ZDF")
             DbSetOrder(2)
             DbGoTop()
             MsSeek((cAliasTmp)->ZDF_FILIAL + (cAliasTmp)->ZDF_CPF + DTos((cAliasTmp)->ZDF_INIAQ) )
             
-            FWMVCRotAuto(    oModel,;
-                            "ZDF",;
-                            MODEL_OPERATION_UPDATE,;
-                            {{"FORMZDF", aDiaRes}}  )
-            RestArea(aAreaZDF)
-            
-      aDiaRes  := {}  
+
+            oModel:SetOperation(MODEL_OPERATION_UPDATE)
+            oModel:Activate()
+            oZDFMod := oModel:GetModel("FORMZDF")
+
+            oZDFMod:SetValue("ZDF_FILIAL", (cAliasTmp)->ZDF_FILIAL)
+            oZDFMod:SetValue("ZDF_CPF",    (cAliasTmp)->ZDF_CPF)
+            oZDFMod:SetValue("ZDF_NOME",    "XXX")
+            oZDFMod:SetValue("ZDF_INIAQ",  (cAliasTmp)->ZDF_INIAQ)
+            oZDFMod:SetValue("ZDF_FIMAQ",  (cAliasTmp)->ZDF_FIMAQ)
+            oZDFMod:SetValue("ZDF_VENFE",  (cAliasTmp)->ZDF_VENFE)
+            oZDFMod:SetValue("ZDF_LIMIGO", (cAliasTmp)->ZDF_LIMIGO)
+            oZDFMod:SetValue("ZDF_DIASAL",  nDiaSal)
+           
+
+            If oModel:VldData()
+                oModel:CommitData()
+                conout("Registro INCLUIDO!")
+            Else
+                VarInfo("Erro ao incluir",oModel:GetErrorMessage())
+                 Help(NIL, NIL, "Erro ao alterar direito de férias ", NIL,"Erro : " + oModel:GetErrorMessage(), 1, 0, NIL, NIL, NIL, NIL, NIL, {"Preencha Corretamente os campos  "})
+  
+            EndIf
+
+            oModel:DeActivate()
+            oModel:Destroy()
+            oModel := NIL
+
       (cAliasTmp)-> (dbskip())
        
         
