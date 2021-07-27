@@ -64,7 +64,7 @@ private aRotina     := {}
                             MODEL_OPERATION_INSERT,;
                             {{"FORMZHS", aAutDiss}}  )
     
-            alert("incluiu dissidio")       
+            
                 
             (cAliasTmp)->(dbskip())
 

@@ -7,7 +7,6 @@
 
 @author  	Hiago   
 
-
 */
 
 #include 'protheus.ch'
@@ -19,6 +18,7 @@
 #define PE_ID_PONTO_EXEC	2   //ID do local de execução do ponto de entrada
 #define PE_ID_FORM			3   //ID do formulário
 
+Static cFunOld	:= ""
 
 User Function MZCADFUN1() 
 
@@ -31,12 +31,9 @@ User Function MZCADFUN1()
 	Local nOpcao	:= 0
 	Local oObj 		:= Nil
    
-   
     private nInclui   := 3
     private nAltera   := 4
 	private nExcluir  := 5 
-	
-
 
     If( aParam == NIL )
 		
@@ -49,22 +46,25 @@ User Function MZCADFUN1()
  	cIdModel := aParam[PE_ID_FORM	   ] 	
 	nOpcao   := oObj:GetOperation()
     
+	
+
 	if cIdPonto == 'MODELPOS'
 
-	  
+	  		cFunOld := ZCO->ZCO_FUNCAO
+
 			If nOpcao == nExcluir	
 
 					xRet := fVldDelet()
 
 			endif
 			
-	ElseIf cIdPonto == 'MODELCOMMITNTTS'
+	ElseIf cIdPonto == 'MODELCOMMITTTS'
 
 			If nOpcao == nInclui 
 
 					xRet := fIncluiHistFun(nInclui)
 
-			ElseIf nOpcao == nAltera .And. ZCO->ZCO_FUNCAO != fwfldGet("ZCO_FUNCAO") 
+			ElseIf nOpcao == nAltera .And. cFunOld != fwfldGet("ZCO_FUNCAO") 
 
 					xRet := fIncluiHistFun(nAltera)
 
@@ -72,10 +72,6 @@ User Function MZCADFUN1()
 			EndIf 
 
     EndIf  
-
-	  
-
-
 
     RestArea(aArea)
 
@@ -132,9 +128,30 @@ Local lOk := .T.
 		Return !lOk
 	EndIf
 */
+	If(!Empty(Alltrim(Posicione("ZHS",1,FwxFilial("ZHS")+fwfldGet("ZCO_CPF"),"ZHS_CPF" ))))
+	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de salario " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+		Return !lOk
+	EndIf	
+
+	If(!Empty(Alltrim(Posicione("ZHF",1,FwxFilial("ZHF")+fwfldGet("ZCO_CPF"),"ZHF_CPF" ))))
+	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de função " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+		Return !lOk
+	EndIf	
+
 	If(!Empty(Alltrim(Posicione("ZHE",1,FwxFilial("ZHE")+fwfldGet("ZCO_CPF"),"ZHE_CPF" ))))
 	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de exames " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
 		Return !lOk
 	EndIf	
+
+	If(!Empty(Alltrim(Posicione("ZDF",1,FwxFilial("ZDF")+fwfldGet("ZCO_CPF"),"ZDF_CPF" ))))
+	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no direito de férias " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+		Return !lOk
+	EndIf	
+
+	If(!Empty(Alltrim(Posicione("ZGF",1,FwxFilial("ZGF")+fwfldGet("ZCO_CPF"),"ZGF_CPF" ))))
+	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no gozo de férias " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+		Return !lOk
+	EndIf	
+	
 
 Return lOk 

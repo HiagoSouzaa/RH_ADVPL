@@ -140,8 +140,9 @@ User Function ExViewDF()
 	private aRotina     := {}
 	Private cCadastro   := ""
 	private oModel := StaticCall(zDirFer, ModelDef)
+	private lMsErroAuto := .F. 
 
-	  If Pergunte("ZRHMANDF", .T., "Incluir Exame",.T.)
+	If Pergunte("ZRHMANDF", .T., "Incluir Exame",.T.)
 
 		   aAdd(aAutDF, {"ZDF_FILIAL",fwFldGet("ZCO_FILIAL")  ,Nil})
  		   aAdd(aAutDF, {"ZDF_CPF"   ,fwFldGet("ZCO_CPF")     ,Nil})
@@ -155,7 +156,13 @@ User Function ExViewDF()
                             "ZDF",;
                             MODEL_OPERATION_INSERT,;
                             {{"FORMZDF", aAutDF}}  )
-		EndIf	
+
+				If lMsErroAuto
+
+					MostraErro()
+			
+				EndIf					
+	EndIf	
 
 	//Atualiza a tela 
 	oModelAux:DeActivate()
@@ -171,6 +178,7 @@ User Function ExViewGF()
 	private aRotina     := {}
 	Private cCadastro   := ""
 	private oModel := StaticCall(zGozFer, ModelDef)
+	private lMsErroAuto := .F. 
 
 	  If Pergunte("ZRHMANGF", .T., "Incluir Exame",.T.)
 
@@ -186,7 +194,13 @@ User Function ExViewGF()
                             "ZGF",;
                             MODEL_OPERATION_INSERT,;
                             {{"FORMZGF", aAutGF}}  )
-		EndIf	
+			If lMsErroAuto
+
+					MostraErro()
+			
+			EndIf			
+
+	  EndIf	
 
 	//Atualiza a tela 
 	oModelAux:DeActivate()

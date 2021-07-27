@@ -61,15 +61,13 @@ Static Function MenuDef()
 	Local aRot		   := {}
 	Local nAcessoTotal := 0
 
-	
-
 	    ADD  OPTION aRot TITLE "Visualizar" ACTION "VIEWDEF.zHisFun1" OPERATION MODEL_OPERATION_VIEW   ACCESS nAcessoTotal //"Visualizar"
-
+		ADD OPTION aRot TITLE "Incluir"    ACTION "VIEWDEF.zHisFun1" OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal //"Incluir"	
+	    ADD OPTION aRot TITLE "Excluir"	   ACTION "VIEWDEF.zHisFun1" OPERATION MODEL_OPERATION_DELETE ACCESS nAcessoTotal //"Excluir"
+	        
        If  FWIsAdmin()  
 
-    	    ADD OPTION aRot TITLE "Incluir"    ACTION "VIEWDEF.zHisFun1" OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal //"Incluir"	
-	        ADD OPTION aRot TITLE "Excluir"	   ACTION "VIEWDEF.zHisFun1" OPERATION MODEL_OPERATION_DELETE ACCESS nAcessoTotal //"Excluir"
-	        ADD OPTION aRot TITLE "Alterar"	   ACTION "VIEWDEF.zHisFun1" OPERATION MODEL_OPERATION_UPDATE ACCESS nAcessoTotal //"Alterar"
+    	    ADD OPTION aRot TITLE "Alterar"	   ACTION "VIEWDEF.zHisFun1" OPERATION MODEL_OPERATION_UPDATE ACCESS nAcessoTotal //"Alterar"
       EndIf
 Return (aRot)
 

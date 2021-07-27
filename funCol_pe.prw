@@ -54,7 +54,7 @@ User Function MZFUNCOL1()
       EndIf  
 
 
-
+		
     RestArea(aArea)
 Return xRet
 

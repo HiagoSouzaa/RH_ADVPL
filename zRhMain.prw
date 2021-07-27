@@ -82,6 +82,10 @@ Static Function ModelDef()
 	oModel := MPFormModel():New('zRhMainM')
 	oModel:AddFields('ZCO_MASTER', /*cOwner*/, oStPai)
 
+	oStFilho1:SetProperty("ZHS_NOME",MODEL_FIELD_INIT,'')
+	oStFilho1:SetProperty("ZHS_NOME",MODEL_FIELD_INIT, {||POSICIONE("ZCO",1,FWXFILIAL("ZCO")+ZHS->ZHS_CPF,"ZCO_NOME")})
+	
+
 	oStFilho2:SetProperty("ZHF_NOME",MODEL_FIELD_INIT,'')
 	oStFilho2:SetProperty("ZHF_NOMEFU",MODEL_FIELD_INIT,{||POSICIONE("ZCF",1,FWXFILIAL("ZCF")+ZHF->ZHF_FUNCAO,"ZCF_DESC")})           
 	
@@ -170,8 +174,8 @@ Static Function ModelDef()
 	
     //Setando o dimensionamento de tamanho
 	oView:CreateHorizontalBox('COLABOADOR', 25)
-	oView:CreateHorizontalBox('FERIAS', 25)
 	oView:CreateHorizontalBox('SALARIO', 25)
+	oView:CreateHorizontalBox('FERIAS', 25)
 	oView:CreateHorizontalBox('EXAME', 25)
 
      //Criando a folder dos produtos (filhos)
@@ -207,6 +211,7 @@ Static Function ModelDef()
 	
 	oStFilho1:RemoveField("ZHS_FILIAL")
 	oStFilho1:RemoveField("ZHS_CPF")
+	oStFilho1:RemoveField("ZHS_NOME")
 
 	oStFilho2:RemoveField("ZHF_FILIAL")
 	oStFilho2:RemoveField("ZHF_CPF")
@@ -218,6 +223,7 @@ Static Function ModelDef()
 
 	oStFilho4:RemoveField("ZDF_FILIAL")
 	oStFilho4:RemoveField("ZDF_CPF")
+	oStFilho4:RemoveField("ZDF_NOME")
 
 	oStFilho5:RemoveField("ZGF_FILIAL")
 	oStFilho5:RemoveField("ZGF_CPF")
