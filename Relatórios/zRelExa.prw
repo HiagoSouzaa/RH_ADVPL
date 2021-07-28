@@ -50,7 +50,6 @@ Static Function fReportDef()
 	Local oFunTot2 := Nil
     Local oBreak := Nil
 
-	
 	//Criação do componente de impressão
 	oReport := TReport():New(	"zRelExa",;		//Nome do Relatório
 								"colaboradores",;		//Título
@@ -110,16 +109,10 @@ Static Function fRepPrint(oReport)
     Local cDaFun   := MV_PAR07
     Local cAteFun  := MV_PAR08
 
-	
-	
-		
-	
 	//Pegando as seções do relatório
 	oSectDad := oReport:Section(1)
 	
 	oReport:SetMsgPrint("Montando consulta do relatório...")
-
-    
 
     cQryAux += " SELECT ZCO_NOME, ZCO_FUNCAO, ZHE_CPF, ZHE_DTREA, ZHE_DTPREA, ZHE_TPEXAM  "
     cQryAux += " FROM "+cNameZHE+ " AS ZHE "
@@ -135,12 +128,10 @@ Static Function fRepPrint(oReport)
 
 	VarInfo("EXAME " , cQryAux)
         
-	
 	//Executando consulta e setando o total da régua
 	TCQuery cQryAux New Alias "QRY_AUX"
 	Count to nTotal
 	oReport:SetMeter(nTotal)
-
 
 	TCSetField("QRY_AUX","ZHE_DTREA","D")
     TCSetField("QRY_AUX","ZHE_DTPREA","D")
@@ -165,18 +156,3 @@ Static Function fRepPrint(oReport)
 	RestArea(aArea)
 Return
 
-
-/*
-  Descrição: Pega origem do produto e retorna descrição adequada para relatório.
-
-static function fGetOrigem(cOrigem)
-      
-	 if(cOrigem $ "03458")
-	     return "Nacional"
-	 elseif(cOrigem $ "1267")
-	     return "Extrangeira"
-	 else
-	     return "Não encontrada"
-	 endif	 
-*/
-return

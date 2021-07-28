@@ -49,9 +49,7 @@ Static Function fReportDef()
 	Local oFunTot1 := Nil
 	Local oFunTot2 := Nil
     Local oBreak := Nil
-	
 
-	
 	//Criação do componente de impressão
 	oReport := TReport():New(	"zRelExa",;		//Nome do Relatório
 								"colaboradores",;		//Título
@@ -78,10 +76,8 @@ Static Function fReportDef()
 	TRCell():New(oSectDad, "ZCF_VLPISO" , "QRY_AUX", "Valor piso"	    , GetSx3Cache("ZCF_VLPISO","X3_Picture")  , GetSx3Cache("ZCF_VLPISO","X3_TAMANHO")     , /*lPixel*/,/*{|| code-block de impressao },/*cAlign*/,/*lLineBreak*/,/*cHeaderAlign */,/*lCellBreak*/,/*nColSpace*/,/*lAutoSize*/,/*nClrBack*/,/*nClrFore*/,/*lBold*/)
     TRCell():New(oSectDad, "ZCF_VLTETO" , "QRY_AUX", "Valor teto"	    , GetSx3Cache("ZCF_VLTETO","X3_Picture")  ,    GetSx3Cache("ZCF_VLTETO","X3_TAMANHO")     , /*lPixel*/,/*{|| code-block de impressao },/*cAlign*/,/*lLineBreak*/,/*cHeaderAlign */,/*lCellBreak*/,/*nColSpace*/,/*lAutoSize*/,/*nClrBack*/,/*nClrFore*/,/*lBold*/) 
 
-
 	aAdd(oSectDad:Cell("ZHS_VLRATU"):aFormatCond, {"ZHS_VLRATU < ZCF_VLPISO" ,,CLR_RED})
 	aAdd(oSectDad:Cell("ZHS_VLRATU"):aFormatCond, {"ZHS_VLRATU > ZCF_VLTETO" ,,CLR_BLUE})
-
 
     //Definindo a quebra
 	oBreak := TRBreak():New(oSectDad,{|| QRY_AUX->(ZHS_CPF) },{|| "Total por colaborador" })
@@ -93,7 +89,6 @@ Static Function fReportDef()
 	oFunTot2:SetEndReport(.F.)
     */
 Return oReport
-	
 /*-------------------------------------------------------------------------------*
  | Func:  fRepPrint                                                              |
  | Desc:  Função que imprime o relatório                                         |
@@ -117,17 +112,10 @@ Static Function fRepPrint(oReport)
     Local cDeCol   := MV_PAR06
     Local cAteCol  := MV_PAR07
     
-
-	
-	
-		
-	
 	//Pegando as seções do relatório
 	oSectDad := oReport:Section(1)
 	
 	oReport:SetMsgPrint("Montando consulta do relatório...")
-
-    
 
     IF( nTodos == 01  )
 
@@ -159,9 +147,6 @@ Static Function fRepPrint(oReport)
         cQryAux += " AND ZCO.D_E_L_E_T_ = '' AND ZHS.D_E_L_E_T_ = '' AND ZCF.D_E_L_E_T_ = '' "
         cQryAux += " GROUP BY ZHS_CPF, ZCO_NOME, ZCO_FUNCAO, ZCF_VLPISO, ZCF_VLTETO "
 
-
-
-
     EndIf 
 	
 	//Executando consulta e setando o total da régua
@@ -169,10 +154,8 @@ Static Function fRepPrint(oReport)
 	Count to nTotal
 	oReport:SetMeter(nTotal)
 
-
 	TCSetField("QRY_AUX","ZHS_DTREAJ","D")
     
-	
 	//Enquanto houver dados
 	oSectDad:Init()
 	QRY_AUX->(DbGoTop())
@@ -192,21 +175,3 @@ Static Function fRepPrint(oReport)
 	
 	RestArea(aArea)
 Return
-
-
-
-
-/*
-  Descrição: Pega origem do produto e retorna descrição adequada para relatório.
-
-static function fGetOrigem(cOrigem)
-      
-	 if(cOrigem $ "03458")
-	     return "Nacional"
-	 elseif(cOrigem $ "1267")
-	     return "Extrangeira"
-	 else
-	     return "Não encontrada"
-	 endif	 
-*/
-return

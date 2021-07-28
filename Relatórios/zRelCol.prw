@@ -103,15 +103,10 @@ Static Function fRepPrint(oReport)
 	Local cFunDe   := MV_PAR05
 	Local cFunPa   := MV_PAR06
 	
-	
-		
-	
 	//Pegando as seções do relatório
 	oSectDad := oReport:Section(1)
 	
 	oReport:SetMsgPrint("Montando consulta do relatório...")
-
-    
 
     cQryAux += " SELECT ZCO_NOME, "
     cQryAux += " ZCO_CPF , "
@@ -159,18 +154,3 @@ Static Function fRepPrint(oReport)
 	RestArea(aArea)
 Return
 
-
-/*
-  Descrição: Pega origem do produto e retorna descrição adequada para relatório.
-
-static function fGetOrigem(cOrigem)
-      
-	 if(cOrigem $ "03458")
-	     return "Nacional"
-	 elseif(cOrigem $ "1267")
-	     return "Extrangeira"
-	 else
-	     return "Não encontrada"
-	 endif	 
-*/
-return
