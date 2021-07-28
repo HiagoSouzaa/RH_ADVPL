@@ -1,3 +1,10 @@
+/*{Protheus.doc} zDesMun 
+
+@description QUERY para os dias de saldo do colaborador
+@author  	Hiago   
+@return 	Undefinied
+
+*/
 #include 'Protheus.ch'
 #Include 'TopConn.ch'
 
@@ -25,14 +32,12 @@ cQryAux += " AND ZDF.D_E_L_E_T_ = '' "
 
      If !((cAliasTmp)->(EOF()))
 
-        nFerias := (cAliasTmp)->ZDF_DIASAL
+         nFerias := (cAliasTmp)->ZDF_DIASAL
             
      EndIf
 
-       (cAliasTmp)->(dbCloseArea())
+         (cAliasTmp)->(dbCloseArea())
         
-      
-
 RestArea(aArea)
 
 Return(nFerias)  

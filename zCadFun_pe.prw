@@ -2,11 +2,9 @@
 /*{Protheus.doc} zCadFun_pe 
 
 @description Ponto de entrada que não permite a exclusam de colaborador com algum histórico,
-			 Permite alterar alterar o cargo do colaborador colocando o dia desejado e o cargo
-
+			 Permite alterar o cargo do colaborador colocando o dia desejado e o cargo
 
 @author  	Hiago   
-
 */
 
 #include 'protheus.ch'
@@ -101,21 +99,17 @@ Static Function fIncluiHistFun(nOpcao)
 	FWMVCRotAuto(	oModel,;                        //Model
 					"ZHF",;                         //Alias
 					MODEL_OPERATION_INSERT,;        //Operacao
-					{{"FORMZHF", aHistfun}})          //Dados
-    
-	
+					{{"FORMZHF", aHistfun}})        //Dados
+ 	
 	 If lMsErroAuto
 
 	 	MostraErro()
 	 
 	EndIf
 
-
 	RestArea(aArea)
 
-
 Return !lMsErroAuto
-
 
 Static Function fVldDelet()
 
@@ -129,29 +123,28 @@ Local lOk := .T.
 	EndIf
 */
 	If(!Empty(Alltrim(Posicione("ZHS",1,FwxFilial("ZHS")+fwfldGet("ZCO_CPF"),"ZHS_CPF" ))))
-	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de salario " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+	 	Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de salario " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de salario"})
 		Return !lOk
 	EndIf	
 
 	If(!Empty(Alltrim(Posicione("ZHF",1,FwxFilial("ZHF")+fwfldGet("ZCO_CPF"),"ZHF_CPF" ))))
-	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de função " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+	 	Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de função " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de função"})
 		Return !lOk
 	EndIf	
 
 	If(!Empty(Alltrim(Posicione("ZHE",1,FwxFilial("ZHE")+fwfldGet("ZCO_CPF"),"ZHE_CPF" ))))
-	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de exames " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+	 	Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no historico de exames " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
 		Return !lOk
 	EndIf	
 
 	If(!Empty(Alltrim(Posicione("ZDF",1,FwxFilial("ZDF")+fwfldGet("ZCO_CPF"),"ZDF_CPF" ))))
-	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no direito de férias " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+	 	Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no direito de férias " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de direito de ferias"})
 		Return !lOk
 	EndIf	
 
 	If(!Empty(Alltrim(Posicione("ZGF",1,FwxFilial("ZGF")+fwfldGet("ZCO_CPF"),"ZGF_CPF" ))))
-	 Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no gozo de férias " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de exame"})
+	 	Help(NIL, NIL, "Não pode excluir ", NIL,"Colaborador tem registro no gozo de férias " , 1, 0, NIL, NIL, NIL, NIL, NIL, {"Apague o registro do colaborador que deseja excluir no historico de gozo de ferias"})
 		Return !lOk
 	EndIf	
 	
-
 Return lOk 

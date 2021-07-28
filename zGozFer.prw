@@ -1,11 +1,10 @@
 /*{Protheus.doc} zGozFer 
-@description Fornece uma tela em MVC para visualização ou alteração(adm) para Gozo de ferias
 
+@description Fornece uma tela em MVC para visualização ou alteração(adm) para Gozo de ferias
 @author  	Hiago   
 @return 	Undefinied
 
 */
-
 
 #Include 'protheus.ch'
 #Include 'totvs.ch'
@@ -13,7 +12,6 @@
 #Include 'msobject.ch'
 #include 'FWMBrowse.ch'
 #Include "FWMVCDEF.CH"
-
 
 //Variáveis Estáticas
 Static cTitulo  := "Gozo de Férias  "
@@ -24,8 +22,8 @@ User Function zGozFer()
     Local aArea   := GetArea()
     Local cFunBkp := FunName()
     Local oBrowse := nil
+	Local nOffWaring := 1
 	
-    
     private cCadastro := "Gozo de Férias"
     
     //Setando o nome da função, para a função customizada
@@ -46,10 +44,16 @@ User Function zGozFer()
     
     //Voltando o nome da função
     SetFunName(cFunBkp)
-       
+
+	If( nOffWaring == 0 )
+		MenuDef()
+		ModelDef()
+		ViewDef()
+	EndIf
+
     FreeObj( oBrowse )    
     RestArea(aArea)
-return
+Return
 
 Static Function MenuDef()
 	Local aRot		   := {}
@@ -92,7 +96,7 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZZ1	:= ZGF->(DbStruct())
+	Local aStruZGF	:= ZGF->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZGOZFER") 

@@ -1,9 +1,8 @@
 /*{Protheus.doc} zJobExa 
-@description Funcao automatica que manda email avisando sobre o vencimento de exames de colaboradores
 
+@description Funcao automatica que manda email avisando sobre o vencimento de exames de colaboradores
 @author  	Hiago   
 @return 	Undefinied
-
 */
 #include 'Protheus.ch'
 #Include 'TopConn.ch'
@@ -44,7 +43,6 @@ User Function zJobExa(aSchedule, cEmp_, cFil_)
         dDiAviso  :=  DAYSUM(DATE(),SuperGetMv("MV_X_VENEX"))
         cPara     :=  SuperGetMv("MV_X_JOBEX")
 
-
     cQUERY := " SELECT  ZHE_CPF, ZHE_DTREA, ZHE_FREQU, ZHE_DTPREA, ZCO_NOME, ZHE_TPEXAM "
     cQUERY += " FROM " + cNameZHE + " AS ZHE "
     cQUERY += " INNER JOIN " + cNameZCO + " "
@@ -56,19 +54,14 @@ User Function zJobExa(aSchedule, cEmp_, cFil_)
     cQUERY := changeQuery(cQUERY)
     VarInfo( cQUERY )
 
-   
     TcQUERY cQUERY New Alias (cAliasTmp)
-
 
     dbSelectArea(cAliasTmp)
 
-        
-    
+// monta o cabecario de exames
 While !(cAliasTmp)->(Eof())
 
-
     cExameAnterior := (cAliasTmp)->ZHE_TPEXAM
-
 
     cTextoHTML +=' <html lang="pt-BR">'
     cTextoHTML +=' <head> '
@@ -140,12 +133,9 @@ While !(cAliasTmp)->(Eof())
      cAssunto  := "Vencimetos de exames : " +; 
                   POSICIONE("SX5",1,FWXFILIAL("SX5")+"ZE"+(cAliasTmp)->ZHE_TPEXAM,"X5_DESCRI") +;
                   "data de vencimento : " + DTOC(dDiAviso)
-
-    
-         While ((cAliasTmp)->ZHE_TPEXAM = cExameAnterior)
-
-     
-            
+        
+        While ((cAliasTmp)->ZHE_TPEXAM = cExameAnterior)
+           
             cTextoHTML +=' <tr> '
             cTextoHTML +='   <td style="color: #636363; border: 1px solid #e5e5e5; padding: 12px; text-align: left; vertical-align: middle; font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; word-wrap: break-word;"> '
             cTextoHTML +=      (cAliasTmp)->ZCO_NOME       
@@ -155,10 +145,8 @@ While !(cAliasTmp)->(Eof())
 			cTextoHTML +='   </td>
 
             dbSkip() 
-
        EndDo 
-                                                                              
-                                                                            
+                                                                                                                                                    
    cTextoHTML +='                                                                </tbody> '
    cTextoHTML +='                                                             </table> '
    cTextoHTML +='                                                        </div> '                                                        
@@ -181,16 +169,11 @@ While !(cAliasTmp)->(Eof())
    cTextoHTML +='</body> '
    cTextoHTML +='</html> '
     
-   
-
-
-
         u_zEnvMail(cPara, cAssunto, cTextoHTML)
     
    cTextoHTML := ' '  
    cAssunto  := ' '
     
-
  EndDo
 
     (cAliasTmp)->(dbCloseArea())

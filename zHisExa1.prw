@@ -1,9 +1,8 @@
 /*{Protheus.doc} zHisExa1 
-@description Fornece uma tela em MVC para visualização ou alteração(adm) para historico de Exames
 
+@description Fornece uma tela em MVC para visualização ou alteração(adm) para historico de Exames
 @author  	Hiago   
 @return 	Undefinied
-
 */
 
 
@@ -25,8 +24,7 @@ User Function zHisExa1()
     Local cFunBkp := FunName()
     Local oBrowse := nil
 	Local nOffWaring := 1
-	
-    
+	  
     private cCadastro := "Histórico de Exames "
     
     //Setando o nome da função, para a função customizada
@@ -61,8 +59,7 @@ return
 Static Function MenuDef()
 	Local aRot		   := {}
 	Local nAcessoTotal := 0
-
-	   
+ 
 	    ADD  OPTION aRot TITLE "Visualizar" ACTION "VIEWDEF.zHisExa1" OPERATION MODEL_OPERATION_VIEW   ACCESS nAcessoTotal //"Visualizar"
 		ADD OPTION aRot TITLE "Incluir"    ACTION "VIEWDEF.zHisExa1" OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal //"Incluir"	
 	    ADD OPTION aRot TITLE "Excluir"	   ACTION "VIEWDEF.zHisExa1" OPERATION MODEL_OPERATION_DELETE ACCESS nAcessoTotal //"Excluir"
@@ -76,13 +73,9 @@ Return (aRot)
 
 Static Function ModelDef()
 
-	
-
 	Local oModel   := Nil
 	Local nModel   := 1
 	Local oStZHE := FWFormStruct( nModel, "ZHE" )	
-
-	
 
 	//Instanciando o modelo, não é recomendado colocar nome da user function (por causa do u_), respeitando 10 caracteres
 	oModel := MPFormModel():New("MZHISEXA1", Nil, Nil, Nil, Nil) 
@@ -94,8 +87,6 @@ Static Function ModelDef()
 
 	//Setando a descrição do formulário pegando ZZ1 MASTER do AddFields 
 	oModel:GetModel("FORMZHE"):SetDescription("Formulário do Cadastro "+cCadastro)
-	
-	
 	
 Return(oModel)
 
@@ -112,8 +103,6 @@ Static Function ViewDef()
 
 	oView:SetModel(oModel)
 	oView:AddField( "VIEW_ZHE", oStruZHE, "FORMZHE")
-
-
 
 	//Colocando título do formulário
 	oView:EnableTitleView('VIEW_ZHE', 'Dados - '+cTitulo )  

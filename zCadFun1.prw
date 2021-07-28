@@ -1,6 +1,6 @@
 /*{Protheus.doc} zModel1 
-@description Fornece uma tela em MVC para cadastro de Colaboradores
 
+@description Fornece uma tela em MVC para cadastro de Colaboradores
 @author  	Hiago   
 @return 	Undefinied
 
@@ -54,6 +54,7 @@ User Function zCadFun1()
 		ModelDef()
 		ViewDef()
 	EndIf
+
     FreeObj( oBrowse )    
     RestArea(aArea)
 return
@@ -70,8 +71,6 @@ Return (aRot)
 
 Static Function ModelDef()
 
-	
-
 	Local oModel   := Nil
 	Local nModel   := 1
 	Local oStZCO := FWFormStruct( nModel, "ZCO" )	
@@ -79,7 +78,6 @@ Static Function ModelDef()
 
 	Default cCadastro := "Colaborador"
 	
-
 	//Innstaciando o modelo, não é recomendado colocar nome da user function (por causa do u_), respeitando 10 caracteres
 	oModel := MPFormModel():New("MZCADFUN1", Nil, Nil, Nil, Nil) 
 
@@ -90,8 +88,6 @@ Static Function ModelDef()
 
 	//Setando a descrição do formulário pegando ZZ1 MASTER do AddFields 
 	oModel:GetModel("FORMZCO"):SetDescription("Formulário do Cadastro "+cCadastro)
-	
-	
 	
 Return(oModel)
 
@@ -108,8 +104,6 @@ Static Function ViewDef()
 
 	oView:SetModel(oModel)
 	oView:AddField( "VIEW_ZCO", oStruZCO, "FORMZCO")
-
-
 
 	//Colocando título do formulário
 	oView:EnableTitleView('VIEW_ZCO', 'Dados - '+cTitulo )  

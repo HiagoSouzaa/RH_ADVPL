@@ -1,3 +1,10 @@
+/*{Protheus.doc} zGozFer_Pe 
+
+@description Ponto de entrada da função zGozFer que faz o calculo do saldo de férias do colaborador
+@author  	Hiago   
+@return 	Undefinied
+
+*/
 #include 'protheus.ch'
 #include 'parmtype.ch'
 #include 'totvs.ch'
@@ -26,9 +33,7 @@ Local xRet 		:= .T.
 
     IF(cIdPonto == 'MODELCOMMITNTTS')
 
-    
-    SubFer()
-
+        SubFer()
 
     EndIf
 
@@ -52,9 +57,6 @@ local oZDFMod := NIL
 
 private aRotina     := {}
 
-
-
-    
     cQryAux += " SELECT ZDF_FILIAL AS ZDF_FILIAL, "
     cQryAux += " ZDF_INIAQ AS ZDF_INIAQ, "
     cQryAux += " ZDF_FIMAQ AS ZDF_FIMAQ, "
@@ -81,23 +83,22 @@ private aRotina     := {}
     dbSelectArea(cAliasTmp)
 
     
-
+    //subtrai os dias gozados de ferias
+    
     While ( !(cAliasTmp)->(Eof()) .And.  nDGozo > 0)
 
       nDiaSal := (cAliasTmp)->ZDF_DIASAL
 
-       If (nDGozo > nDiaSal)
+       If(nDGozo > nDiaSal)
 
-       nDGozo -=  nDiaSal
+            nDGozo -=  nDiaSal
 
-       nDiaSal := 0
-
-
+            nDiaSal := 0
        Else
 
-        nDiaSal -= nDGozo
+            nDiaSal -= nDGozo
 
-        nDGozo := 0 
+            nDGozo := 0 
 
        EndIf
 
@@ -108,7 +109,6 @@ private aRotina     := {}
             DbGoTop()
             MsSeek((cAliasTmp)->ZDF_FILIAL + (cAliasTmp)->ZDF_CPF + DTos((cAliasTmp)->ZDF_INIAQ) )
             
-
             oModel:SetOperation(MODEL_OPERATION_UPDATE)
             oModel:Activate()
             oZDFMod := oModel:GetModel("FORMZDF")
@@ -137,8 +137,7 @@ private aRotina     := {}
             oModel := NIL
 
       (cAliasTmp)-> (dbskip())
-       
-        
+         
     enddo
    
     (cAliasTmp)->(dbCloseArea())

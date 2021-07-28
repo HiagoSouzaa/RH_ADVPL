@@ -130,10 +130,10 @@ Static Function fRepPrint(oReport)
     cQryAux += " AND  ZHE_CPF    BETWEEN '"+cDeCol+"' AND '"+cAteCol+"' "
 	cQryAux += " AND  ZCO_FUNCAO BETWEEN '"+cDaFun+"' AND '"+cAteFun+"' "	
     cQryAux += " AND  ZHE_TPEXAM BETWEEN '"+cDeExam+"'  AND '"+cAteExam+"' "
-	cQryAux += " AND ZCO.D_E_L_E_T_ = '' AND ZHE..D_E_L_E_T_ = '' "	
+	cQryAux += " AND ZCO.D_E_L_E_T_ = '' AND ZHE.D_E_L_E_T_ = '' "	
     cQryAux += " ORDER BY ZHE_CPF, ZCO_FUNCAO, ZHE_TPEXAM "
 
-	
+	VarInfo("EXAME " , cQryAux)
         
 	
 	//Executando consulta e setando o total da régua

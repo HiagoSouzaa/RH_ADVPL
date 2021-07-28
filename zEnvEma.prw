@@ -1,9 +1,8 @@
 /*{Protheus.doc} zEnvEma
-@description Funcão a ser chamada para o envio de emails
 
+@description Funcão a ser chamada para o envio de emails
 @author  	Hiago   
 @return 	Undefinied
-
 */
 
 #Include "Protheus.ch"
@@ -27,6 +26,7 @@ user function zEnvEma(cDe,cPara,cCC,cCO,cAssunto,cMsg)
         Else
             cRet := "Falha na conexao "+cError
         Endif
+        
         Return(.F.)
     Endif
     SEND MAIL FROM cDe TO cPara CC cCC BCC cCO SUBJECT cAssunto BODY cMsg FORMAT TEXT RESULT lResulSend

@@ -1,9 +1,8 @@
 /*{Protheus.doc} zHisSal1 
-@description Fornece uma tela em MVC para Historico de Salario 
 
+@description Fornece uma tela em MVC para Historico de Salario 
 @author  	Hiago   
 @return 	Undefinied
-
 */
 
 #Include 'protheus.ch'
@@ -12,8 +11,6 @@
 #Include 'msobject.ch'
 #include 'FWMBrowse.ch'
 #Include "FWMVCDEF.CH"
-
-
 
 Static cTitulo  := "Historico da salario"
 Static cDefault := "Historico DE SALARIO"
@@ -68,21 +65,16 @@ Static Function MenuDef()
 	       
        If  FWIsAdmin()
 
-    	  ADD OPTION aRot TITLE "Alterar"	    			ACTION "VIEWDEF.zHisSal1"  OPERATION MODEL_OPERATION_UPDATE ACCESS nAcessoTotal //"Alterar"
+    	  	ADD OPTION aRot TITLE "Alterar"	    			ACTION "VIEWDEF.zHisSal1"  OPERATION MODEL_OPERATION_UPDATE ACCESS nAcessoTotal //"Alterar"
       EndIf
 
 Return (aRot)
 
-
 Static Function ModelDef()
-
-	
 
 	Local oModel   := Nil
 	Local nModel   := 1
 	Local oStZHS := FWFormStruct( nModel, "ZHS" )	
-
-	
 
 	//Instanciando o modelo, não é recomendado colocar nome da user function (por causa do u_), respeitando 10 caracteres
 	oModel := MPFormModel():New("MZHISSAL1", Nil, Nil, Nil, Nil) 
@@ -94,8 +86,7 @@ Static Function ModelDef()
 
 	//Setando a descrição do formulário pegando ZZ1 MASTER do AddFields 
 	oModel:GetModel("FORMZHS"):SetDescription("Formulário do Cadastro "+cCadastro)
-	
-	
+		
 	
 Return(oModel)
 
@@ -112,8 +103,6 @@ Static Function ViewDef()
 
 	oView:SetModel(oModel)
 	oView:AddField( "VIEW_ZHS", oStruZHS, "FORMZHS")
-
-
 
 	//Colocando título do formulário
 	oView:EnableTitleView('VIEW_ZHS', 'Dados - '+cTitulo )  

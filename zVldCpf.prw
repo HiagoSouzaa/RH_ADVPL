@@ -1,18 +1,12 @@
 /*{Protheus.doc} zVldCpf
 
 @description funcao que inibe o usuario de tentar cadastrar CPF com numeros igual 
-
 @author  	Hiago   
-
-
 */
 #Include 'protheus.ch'
 
-
-
 User Function zVldCpf(cCpf)
 
-    
      Local lRet := .T.    
 
      If ( cCpf $ "00000000000" .OR.; 
@@ -26,9 +20,9 @@ User Function zVldCpf(cCpf)
           cCpf $ "88888888888" .OR.; 
           cCpf $ "99999999999"     )
 
-         lRet := .F.
+          lRet := .F.
 
-         Help(NIL, NIL, "CPF invalido ", NIL,"cpf invalido :" +  cCpf, 1, 0, NIL, NIL, NIL, NIL, NIL, {"Digite um CPF válido"})
+          Help(NIL, NIL, "CPF invalido ", NIL,"cpf invalido :" +  cCpf, 1, 0, NIL, NIL, NIL, NIL, NIL, {"Digite um CPF válido"})
      EndIf
 
 Return  lRet                                                         

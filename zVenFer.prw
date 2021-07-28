@@ -1,6 +1,6 @@
 /*{Protheus.doc} zHSSal 
-@description Query que retorna a data do ultimo vencimento de férias 
 
+@description Query que retorna a data do ultimo vencimento de férias 
 @author  	Hiago   
 @return 	Undefinied
 
@@ -14,8 +14,6 @@ User function zVenFer(cCpf,dDiaVen)
     Local cQUERY    :=  ' ' 
     Local cNameZDF  := retSqlname("ZDF") 
     Local cAliasTmp := 'zVenFer' + FWTimeStamp()
-    
-
     Local dData    :=  YearSum(dDiaVen,1)
 
       // SELECT * FROM ZHS990
@@ -27,8 +25,6 @@ User function zVenFer(cCpf,dDiaVen)
         cQUERY += " GROUP BY ZDF_CPF" 
         cQUERY := changeQuery(cQUERY) 
         
-      
-
         TcQuery cQuery New Alias (cAliasTmp)
 
         TCSetField((cAliasTmp),"ZDF_VENFE","D")
@@ -41,12 +37,9 @@ User function zVenFer(cCpf,dDiaVen)
             
         EndIf
 
-
         ConOut(cValToChar(dData) )
         
         (cAliasTmp)->(dbCloseArea())
-
-       
 
     RestArea(aArea) 
 

@@ -1,10 +1,7 @@
 /*{Protheus.doc} zAutDiss
 
 @description Calculo automatico do dissidio dos colabores buscados pela query
-
 @author  	Hiago   
-
-
 */
  
 #include 'protheus.ch' 
@@ -25,10 +22,6 @@ Local nVlrAum   := 0
 
 Private oModel := StaticCall(zHisSal1, ModelDef)
 private aRotina     := {}
-
- 
-
-
 
     If Pergunte("ZHISSAL1")
 
@@ -56,16 +49,12 @@ private aRotina     := {}
             aAdd(aAutDiss,  {"ZHS_DTREAJ",dDate                 ,Nil})
             aAdd(aAutDiss, {"ZHS_VLRREA",nVlrAum                  ,Nil})
             aAdd(aAutDiss, {"ZHS_TPAUME","1"                    ,Nil})
-
-           
-            
+   
             FWMVCRotAuto(    oModel,;
                             "ZHS",;
                             MODEL_OPERATION_INSERT,;
                             {{"FORMZHS", aAutDiss}}  )
-    
-            
-                
+           
             (cAliasTmp)->(dbskip())
 
             aAutDiss:= {}
@@ -74,4 +63,5 @@ private aRotina     := {}
     
     EndIf
     RestArea(aArea)
-return
+
+Return

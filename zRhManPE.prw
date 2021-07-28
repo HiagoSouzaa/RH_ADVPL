@@ -1,3 +1,10 @@
+/*{Protheus.doc} zRhMain_pe 
+
+@description Ponto de entrada que inclui os botoes para criar função, salario, ferias, exame 
+			 dentro do zRhmain
+
+@author  	Hiago   
+*/
 #Include "Protheus.ch"
 #Include "FWMVCDef.ch"
 
@@ -8,32 +15,23 @@ User Function zRhMainM()
 	Local xRet       := .T.
     Local cIdModel   := ''
    
-    
-
     oObj     := aParam[1]
 	cIdPonto := aParam[2]
 	cIdModel := aParam[3]
 
- If cIdPonto == 'BUTTONBAR'
+ 	If cIdPonto == 'BUTTONBAR'
 
-  
-
-    xRet :=  {{'Salario', 'SALARIO', 			{ || u_ExViewSA() }, 'Este botao inclui salario ' },;
-             {'Funcao'  , 'FUNCAO',  			{ || u_ExViewFU() }, 'Este botao inclui Funcao  ' },;
-             {'Direito de férias', 'DIREITO DE FERIAS',  { || u_ExViewDF() }, 'Este botao inclui Direito de férias  ' },;
-             {'Gozo de férias', 'GOZO DE FERIAS',  	{ || u_ExViewGF() }, 'Este botao inclui Gozo de férias  ' },;
-             {'Exame'   , 'EXAME',   			{ || u_ExViewEX() }, 'Este botao inclui Exame   ' }}
-
-            
-
- EndIf
+		xRet :=  {{'Salario', 'SALARIO', 			{ || u_ExViewSA() }, 'Este botao inclui salario ' },;
+				{'Funcao'  , 'FUNCAO',  			{ || u_ExViewFU() }, 'Este botao inclui Funcao  ' },;
+				{'Direito de férias', 'DIREITO DE FERIAS',  { || u_ExViewDF() }, 'Este botao inclui Direito de férias  ' },;
+				{'Gozo de férias', 'GOZO DE FERIAS',  	{ || u_ExViewGF() }, 'Este botao inclui Gozo de férias  ' },;
+				{'Exame'   , 'EXAME',   			{ || u_ExViewEX() }, 'Este botao inclui Exame   ' }}        
+ 	EndIf
    
             
      RestArea(aArea)
 
-
 Return xRet
-
 
 User Function ExViewSA()
 
@@ -52,18 +50,14 @@ User Function ExViewSA()
 		   aAdd(aAutSal, {"ZHS_VLRREA" ,MV_PAR02                 ,Nil})
 		   aAdd(aAutSal, {"ZHS_TPAUME", cValToChar(MV_PAR03)     ,Nil})
 		   
-
-
-
 		  FWMVCRotAuto(    oModel,;
                             "ZHS",;
                             MODEL_OPERATION_INSERT,;
                             {{"FORMZHS", aAutSal}}  )
 		EndIf		
-
-		oModelAux:DeActivate()
-	    oModelaux:Activate()  			
-
+		//Atualiza a tela 
+	oModelAux:DeActivate()
+	oModelaux:Activate()  			
 Return
 
 User Function ExViewFU()
@@ -82,19 +76,14 @@ User Function ExViewFU()
 	       aAdd(aAutFu, {"ZHF_FUNCAO" ,MV_PAR01   			   ,Nil})
 		   aAdd(aAutFu, {"ZHF_DTINI"  ,MV_PAR02                ,Nil})
 		   
-		   
-
-
-
 		  FWMVCRotAuto(    oModel,;
                             "ZHF",;
                             MODEL_OPERATION_INSERT,;
                             {{"FORMZHF", aAutFu}}  )
 		EndIf			
-
+	//Atualiza a tela 
 	oModelAux:DeActivate()
 	oModelaux:Activate()			
-
 
 Return
 
@@ -115,9 +104,6 @@ User Function ExViewEX()
 	       aAdd(aAutExa, {"ZHE_DTREA" ,MV_PAR02   			   ,Nil})
 		   aAdd(aAutExa, {"ZHE_FREQU" ,MV_PAR03                ,Nil})
 		   aAdd(aAutExa, {"ZHE_TPEXAM",MV_PAR01                ,Nil})
-		   
-
-
 
 		  FWMVCRotAuto(    oModel,;
                             "ZHE",;
@@ -128,7 +114,6 @@ User Function ExViewEX()
 	//Atualiza a tela 
 	oModelAux:DeActivate()
 	oModelaux:Activate()
-
     
 Return
 
@@ -149,9 +134,6 @@ User Function ExViewDF()
 	       aAdd(aAutDF, {"ZDF_INIAQ" ,MV_PAR01   			   ,Nil})
 	       aAdd(aAutDF, {"ZDF_FIMAQ" ,MV_PAR02   			   ,Nil})
 		 
-
-
-
 		  FWMVCRotAuto(    oModel,;
                             "ZDF",;
                             MODEL_OPERATION_INSERT,;
@@ -162,7 +144,7 @@ User Function ExViewDF()
 					MostraErro()
 			
 				EndIf					
-	EndIf	
+   EndIf	
 
 	//Atualiza a tela 
 	oModelAux:DeActivate()
@@ -187,9 +169,6 @@ User Function ExViewGF()
 	       aAdd(aAutGF, {"ZGF_DTINI" ,MV_PAR01   			   ,Nil})
 	       aAdd(aAutGF, {"ZGF_DTFIM" ,MV_PAR02   			   ,Nil})
 		 
-
-
-
 		  FWMVCRotAuto(    oModel,;
                             "ZGF",;
                             MODEL_OPERATION_INSERT,;

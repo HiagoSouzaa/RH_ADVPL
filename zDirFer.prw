@@ -1,6 +1,6 @@
-/*{Protheus.doc} zDirFer 
-@description Fornece uma tela em MVC para visualização ou alteração(adm) para Direito de ferias
+/*{Protheus.doc} zDirFer
 
+@description Fornece uma tela em MVC para visualização ou alteração(adm) para Direito de ferias
 @author  	Hiago   
 @return 	Undefinied
 
@@ -66,13 +66,9 @@ Return (aRot)
 
 Static Function ModelDef()
 
-	
-
 	Local oModel   := Nil
 	Local nModel   := 1
 	Local oStZDF := FWFormStruct( nModel, "ZDF" )	
-
-	
 
 	//Instanciando o modelo, não é recomendado colocar nome da user function (por causa do u_), respeitando 10 caracteres
 	oModel := MPFormModel():New("MZDIRFER", Nil, Nil, Nil, Nil) 
@@ -84,8 +80,6 @@ Static Function ModelDef()
 
 	//Setando a descrição do formulário pegando ZZ1 MASTER do AddFields 
 	oModel:GetModel("FORMZDF"):SetDescription("Formulário do Cadastro "+cCadastro)
-	
-	
 	
 Return(oModel)
 
@@ -102,8 +96,6 @@ Static Function ViewDef()
 
 	oView:SetModel(oModel)
 	oView:AddField( "VIEW_ZDF", oStruZDF, "FORMZDF")
-
-
 
 	//Colocando título do formulário
 	oView:EnableTitleView('VIEW_ZDF', 'Dados - '+cTitulo )  

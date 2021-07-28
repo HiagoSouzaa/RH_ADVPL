@@ -1,7 +1,7 @@
 
 /*{Protheus.doc} zModel1 
-@description Fornece uma tela em MVC para cadastro de Função
 
+@description Fornece uma tela em MVC para cadastro de Função
 @author  	Hiago   
 @return 	Undefinied
 
@@ -26,7 +26,6 @@ User Function zFunCol1()
     Local oBrowse := nil
 	Local nOffWaring := 1
 	
-    
     private cCadastro := "Função"
     
     //Setando o nome da função, para a função customizada
@@ -71,13 +70,9 @@ Return (aRot)
 
 Static Function ModelDef()
 
-	
-
 	Local oModel   := Nil
 	Local nModel   := 1
 	Local oStZCF := FWFormStruct( nModel, "ZCF" )	
-
-	
 
 	//Instanciando o modelo, não é recomendado colocar nome da user function (por causa do u_), respeitando 10 caracteres
 	oModel := MPFormModel():New("MZFUNCOL1", Nil, Nil, Nil, Nil) 
@@ -89,8 +84,6 @@ Static Function ModelDef()
 
 	//Setando a descrição do formulário pegando ZZ1 MASTER do AddFields 
 	oModel:GetModel("FORMZCF"):SetDescription("Formulário do Cadastro "+cCadastro)
-	
-	
 	
 Return(oModel)
 
@@ -107,8 +100,6 @@ Static Function ViewDef()
 
 	oView:SetModel(oModel)
 	oView:AddField( "VIEW_ZCF", oStruZCF, "FORMZCF")
-
-
 
 	//Colocando título do formulário
 	oView:EnableTitleView('VIEW_ZCF', 'Dados - '+cTitulo )  

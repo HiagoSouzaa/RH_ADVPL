@@ -19,9 +19,7 @@ User function ZHSSal(cCpf)
     Local nValor    := 0
 
     Default cCpf := ' ' 
-
-     
-         
+    
         // SELECT * FROM ZHS990
         cQUERY := " SELECT ZHS_CPF,  MAX(ZHS_DTREAJ) AS 'ZHS_DTREAJ' ,  MAX(ZHS_VLRATU) AS 'ZHS_VLRATU' "
         cQUERY += " FROM " + cNameZHS + " AS ZHS "
@@ -47,8 +45,6 @@ User function ZHSSal(cCpf)
         ConOut(cValToChar(nValor) )
         
         (cAliasTmp)->(dbCloseArea())
-
-       
-
+ 
     RestArea(aArea) 
 Return(nValor)

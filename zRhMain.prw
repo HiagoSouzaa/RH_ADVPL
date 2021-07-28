@@ -1,10 +1,9 @@
 /*{Protheus.doc} zRhMain 
+
 @description Fornece uma tela em MVC com dados do colaborador, 
 			 historico de salário, historico de funcao e historico de exame.
-
 @author  	Hiago   
 @return 	Undefinied
-
 */
 #Include 'Protheus.ch'
 #Include 'FWMVCDef.ch'
@@ -52,7 +51,6 @@ Static Function MenuDef()
 	//Adicionando opções
 	ADD OPTION aRot TITLE 'Gerenciar Colaborador'       ACTION 'VIEWDEF.zRhMain' OPERATION MODEL_OPERATION_VIEW   ACCESS nAcessoTotal
 	ADD OPTION aRot TITLE "Incluir novo colaborador"    ACTION "VIEWDEF.zCadFun1"OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal
-
 	
 	ADD OPTION aSubRot TITLE "Relatório Colaboradores"  ACTION "u_zRelCol"OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal
 	ADD OPTION aSubRot TITLE "Relatório de exames "     ACTION "u_zRelExa"OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal
@@ -60,7 +58,6 @@ Static Function MenuDef()
 	
 	ADD OPTION aRot    TITLE 'Relatórios'               ACTION aSubRot OPERATION MODEL_OPERATION_VIEW ACCESS nAcessoTotal
 	
-
 Return aRot
 
 Static Function ModelDef()
@@ -97,8 +94,6 @@ Static Function ModelDef()
 	
 	oStFilho5:SetProperty("ZGF_NOME",MODEL_FIELD_INIT,'')
 	oStFilho5:SetProperty("ZGF_NOME",MODEL_FIELD_INIT, {||POSICIONE("ZCO",1,FWXFILIAL("ZCO")+ZGF->ZGF_CPF,"ZCO_NOME")})
-	
-	
 	
     //Criando as grids dos filhos
 	oModel:AddGrid('ZHS_FILHO1', 'ZCO_MASTER', oStFilho1)
@@ -142,9 +137,7 @@ Static Function ModelDef()
 	oModel:GetModel('ZDF_FILHO4'):SetDescription('Direito de Férias')
 	oModel:GetModel('ZGF_FILHO5'):SetDescription('Gozo das Férias')
 	
-	
-	
-	Return oModel
+Return oModel
 
  Static Function ViewDef()
 
@@ -199,7 +192,6 @@ Static Function ModelDef()
 	oView:CreateHorizontalBox('ITENS_FILHO04', 100,,, 'PASTA_FILHO_FERIAS', 'ABA_FILHO04' )
 	oView:CreateHorizontalBox('ITENS_FILHO05', 100,,, 'PASTA_FILHO_FERIAS', 'ABA_FILHO05' )
 	
-
   //Amarrando a view com as box
 	oView:SetOwnerView('VIEW_ZCO',    'COLABOADOR')
 	oView:SetOwnerView('VIEW_FILHO1', 'ITENS_FILHO01')
@@ -228,11 +220,6 @@ Static Function ModelDef()
 	oStFilho5:RemoveField("ZGF_FILIAL")
 	oStFilho5:RemoveField("ZGF_CPF")
 	oStFilho5:RemoveField("ZGF_NOME")
-	
-
-
-
-
 	
 Return oView
 
