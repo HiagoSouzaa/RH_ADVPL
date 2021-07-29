@@ -24,6 +24,7 @@ User Function zDirFer()
     Local aArea   := GetArea()
     Local cFunBkp := FunName()
     Local oBrowse := nil
+	Local nOffWaring := 1
 	
     
     private cCadastro := "Direito de Férias"
@@ -46,7 +47,13 @@ User Function zDirFer()
     
     //Voltando o nome da função
     SetFunName(cFunBkp)
-       
+
+	If( nOffWaring == 0 )
+		MenuDef()
+		ModelDef()
+		ViewDef()
+	EndIf
+
     FreeObj( oBrowse )    
     RestArea(aArea)
 return
@@ -55,12 +62,14 @@ Static Function MenuDef()
 	Local aRot		   := {}
 	Local nAcessoTotal := 0
 
-	   
+	 If  FWIsAdmin()
+			ADD OPTION aRot TITLE "Alterar"	   ACTION "VIEWDEF.zDirFer" OPERATION MODEL_OPERATION_UPDATE ACCESS nAcessoTotal //"Alterar"
+	 EndIf
             ADD  OPTION aRot TITLE "Visualizar" ACTION "VIEWDEF.zDirFer" OPERATION MODEL_OPERATION_VIEW   ACCESS nAcessoTotal //"Visualizar"
     	    ADD OPTION aRot TITLE "Incluir"    ACTION "VIEWDEF.zDirFer" OPERATION MODEL_OPERATION_INSERT ACCESS nAcessoTotal //"Incluir"	
 	        ADD OPTION aRot TITLE "Excluir"	   ACTION "VIEWDEF.zDirFer" OPERATION MODEL_OPERATION_DELETE ACCESS nAcessoTotal //"Excluir"
-	        ADD OPTION aRot TITLE "Alterar"	   ACTION "VIEWDEF.zDirFer" OPERATION MODEL_OPERATION_UPDATE ACCESS nAcessoTotal //"Alterar"
-     
+	        
+			
 Return (aRot)
 
 
