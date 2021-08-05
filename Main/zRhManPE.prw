@@ -127,7 +127,7 @@ User Function ExViewDF()
 	private oModel := StaticCall(zDirFer, ModelDef)
 	private lMsErroAuto := .F. 
 
-	If Pergunte("ZRHMANDF", .T., "Incluir Exame",.T.)
+	If Pergunte("ZRHMANDF", .T., "Direito de Férias",.T.)
 
 		   aAdd(aAutDF, {"ZDF_FILIAL",fwFldGet("ZCO_FILIAL")  ,Nil})
  		   aAdd(aAutDF, {"ZDF_CPF"   ,fwFldGet("ZCO_CPF")     ,Nil})
@@ -162,7 +162,7 @@ User Function ExViewGF()
 	private oModel := StaticCall(zGozFer, ModelDef)
 	private lMsErroAuto := .F. 
 
-	  If Pergunte("ZRHMANGF", .T., "Incluir Exame",.T.)
+	  If Pergunte("ZRHMANGF", .T., "Gozo de Férias",.T.)
 
 		   aAdd(aAutGF, {"ZGF_FILIAL",fwFldGet("ZCO_FILIAL")  ,Nil})
  		   aAdd(aAutGF, {"ZGF_CPF"   ,fwFldGet("ZCO_CPF")     ,Nil})
