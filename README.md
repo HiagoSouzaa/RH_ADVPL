@@ -3,7 +3,7 @@
     Estágio monitorado.
 
     Projeto realizado na empresa Portão de Cambui Doce e Laticinios LTDA portadora do CNPJ: 00.497.383/0001-55
-    Finalidade: criar controles para o setor de Recursos Humanos de acordos com as suas especificidades
+    Finalidade: criar controles para o setor de Recursos Humanos de acordo com as suas especificidades
         
         
     Site da empresa: www.portaodecambui.com.br
@@ -33,5 +33,5 @@
 8. Gerenciador de colaboradores
 ![Gerenciador de colaboradores](https://github.com/HiagoSouzaa/RH_ADVPL/blob/add574cca4b52ef33980d7edf5a983469f5a101e/Gifs/RH%20main.gif)&nbsp;
 
-9. Iclusões do gerenciador de colaboradores
+9. Inclusões do gerenciador de colaboradores
 ![Inclusões do gerenciador de colaboradores](https://github.com/HiagoSouzaa/RH_ADVPL/blob/add574cca4b52ef33980d7edf5a983469f5a101e/Gifs/inclusoes%20RH%20main.gif)&nbsp;
