@@ -1,7 +1,12 @@
 # Projeto de gerenciamento de RH
-    Projeto realizado na empresa Portão de Cambui Doce e Laticinios LTDA
-    
 
+    Estágio monitorado.
+
+    Projeto realizado na empresa Portão de Cambui Doce e Laticinios LTDA portadora do CNPJ: 00.497.383/0001-55
+    Finalidade: criar controles para o setor de Recursos Humanos de acordos com as suas especificidades
+        
+        
+    Site da empresa: www.portaodecambui.com.br
 ## Resultados
 
 1. Cadastro e alteração do colaborador
