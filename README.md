@@ -1,3 +1,7 @@
+# Projeto de gerenciamento de RH
+    Projeto realizado na empresa Portão de Cambui Doce e Laticinios LTDA
+    
+
 ## Resultados
 
 1. Cadastro e alteração do colaborador
@@ -25,4 +29,4 @@
 ![Gerenciador de colaboradores](https://github.com/HiagoSouzaa/RH_ADVPL/blob/add574cca4b52ef33980d7edf5a983469f5a101e/Gifs/RH%20main.gif)&nbsp;
 
 9. Iclusões do gerenciador de colaboradores
-![Iclusões do gerenciador de colaboradores](https://github.com/HiagoSouzaa/RH_ADVPL/blob/add574cca4b52ef33980d7edf5a983469f5a101e/Gifs/inclusoes%20RH%20main.gif)&nbsp;
+![Inclusões do gerenciador de colaboradores](https://github.com/HiagoSouzaa/RH_ADVPL/blob/add574cca4b52ef33980d7edf5a983469f5a101e/Gifs/inclusoes%20RH%20main.gif)&nbsp;
