@@ -36,8 +36,6 @@ User function zVenFer(cCpf,dDiaVen)
             dData := YearSum((cAliasTmp)->ZDF_VENFE,1) 
             
         EndIf
-
-        ConOut(cValToChar(dData) )
         
         (cAliasTmp)->(dbCloseArea())
 

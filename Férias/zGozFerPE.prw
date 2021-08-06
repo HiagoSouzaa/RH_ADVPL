@@ -125,7 +125,6 @@ private aRotina     := {}
 
             If oModel:VldData()
                 oModel:CommitData()
-                conout("Registro INCLUIDO!")
             Else
                 VarInfo("Erro ao incluir",oModel:GetErrorMessage())
                  Help(NIL, NIL, "Erro ao alterar direito de férias ", NIL,"Erro : " + oModel:GetErrorMessage(), 1, 0, NIL, NIL, NIL, NIL, NIL, {"Preencha Corretamente os campos  "})

@@ -40,9 +40,6 @@ User function ZHSSal(cCpf)
             nValor := (cAliasTmp)->ZHS_VLRATU
             
         EndIf
-
-
-        ConOut(cValToChar(nValor) )
         
         (cAliasTmp)->(dbCloseArea())
  
