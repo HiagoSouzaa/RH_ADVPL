@@ -13,7 +13,6 @@
 #Include "FWMVCDEF.CH"
 
 Static cTitulo  := "Historico da salario"
-Static cDefault := "Historico DE SALARIO"
 
 User Function zHisSal1()
 
@@ -93,7 +92,6 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZHS  := ZHS->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZHISSAL1") 
