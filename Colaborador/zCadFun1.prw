@@ -16,7 +16,6 @@
 
 //Variáveis Estáticas
 Static cTitulo  := "Colaborador"
-Static cDefault := "NOME DO COLABORADOR"
 
 User Function zCadFun1()
 
@@ -94,7 +93,7 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZCO	:= ZCO->(DbStruct())
+	
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZCADFUN1") 

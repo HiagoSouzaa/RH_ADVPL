@@ -17,7 +17,6 @@
 
 //Variáveis Estáticas
 Static cTitulo  := "Função"
-Static cDefault := "CADASTRO DE FUNÇÃO"
 
 User Function zFunCol1()
 
@@ -90,7 +89,6 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZCF	:= ZCF->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZFUNCOL1") 

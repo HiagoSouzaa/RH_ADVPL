@@ -46,8 +46,6 @@ Static Function fReportDef()
 
 	Local oReport
 	Local oSectDad := Nil
-	Local oFunTot1 := Nil
-	Local oFunTot2 := Nil
     Local oBreak := Nil
 
 	//Criação do componente de impressão
@@ -82,12 +80,7 @@ Static Function fReportDef()
     //Definindo a quebra
 	oBreak := TRBreak():New(oSectDad,{|| QRY_AUX->(ZHS_CPF) },{|| "Total por colaborador" })
 	oSectDad:SetHeaderBreak(.T.)
-    /*Totalizadores
-	oFunTot1 := TRFunction():New(oSectDad:Cell("QUANTIDADE"),,"SUM",,,"@E 99,999,999,999.999" )
-	oFunTot1:SetEndReport(.F.)
-	oFunTot2 := TRFunction():New(oSectDad:Cell("VLR_TOTAL"),,"SUM",,,"@E 99,999,999,999.99" )
-	oFunTot2:SetEndReport(.F.)
-    */
+  
 Return oReport
 /*-------------------------------------------------------------------------------*
  | Func:  fRepPrint                                                              |

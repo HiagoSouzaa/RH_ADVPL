@@ -16,7 +16,7 @@
 
 //Variáveis Estáticas
 Static cTitulo  := "Historico da Exame"
-Static cDefault := "Historico DE EXAME"
+
 
 User Function zHisExa1()
 
@@ -93,7 +93,7 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZHE	:= ZHE->(DbStruct())
+	
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZHISEXA1") 

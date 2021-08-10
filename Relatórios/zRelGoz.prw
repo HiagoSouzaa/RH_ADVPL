@@ -46,9 +46,7 @@ Static Function fReportDef()
 
 	Local oReport
 	Local oSectDad := Nil
-	Local oFunTot1 := Nil
-	Local oFunTot2 := Nil
-	
+
 	//Criação do componente de impressão
 	oReport := TReport():New(	"zRelGoz",;		//Nome do Relatório
 								"Gozo das Férias",;		//Título
@@ -73,12 +71,6 @@ Static Function fReportDef()
 	TRCell():New(oSectDad, "ZGF_DTFIM"  , "QRY_AUX", "Fim das férias"        , GetSx3Cache("ZGF_DTFIM","X3_Picture") , /*lPixel*/,/*{|| code-block de impressao }*/,/*cAlign*/,/*lLineBreak*/,/*cHeaderAlign */,/*lCellBreak*/,/*nColSpace*/,/*lAutoSize*/,/*nClrBack*/,/*nClrFore*/,/*lBold*/)
 	TRCell():New(oSectDad, "ZGF_DIGOZO" , "QRY_AUX", "Dias gozados"          , GetSx3Cache("ZGF_DIGOZO","X3_Picture"), /*lPixel*/,/*{|| code-block de impressao }*/,/*cAlign*/,/*lLineBreak*/,/*cHeaderAlign */,/*lCellBreak*/,/*nColSpace*/,/*lAutoSize*/,/*nClrBack*/,/*nClrFore*/,/*lBold*/)
 
-	/*Totalizadores
-	oFunTot1 := TRFunction():New(oSectDad:Cell("QUANTIDADE"),,"SUM",,,"@E 99,999,999,999.999" )
-	oFunTot1:SetEndReport(.F.)
-	oFunTot2 := TRFunction():New(oSectDad:Cell("VLR_TOTAL"),,"SUM",,,"@E 99,999,999,999.99" )
-	oFunTot2:SetEndReport(.F.)
-    */
 Return oReport
 	
 /*-------------------------------------------------------------------------------*

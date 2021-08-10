@@ -46,8 +46,6 @@ Static Function fReportDef()
 
 	Local oReport
 	Local oSectDad := Nil
-	Local oFunTot1 := Nil
-	Local oFunTot2 := Nil
 	
 	//Criação do componente de impressão
 	oReport := TReport():New(	"zRelDir",;		//Nome do Relatório
@@ -77,12 +75,7 @@ Static Function fReportDef()
 
 	aAdd(oSectDad:Cell("ZDF_VENFE"):aFormatCond, {"ZDF_VENFE < DATE() ",,CLR_RED})
 
-	/*Totalizadores
-	oFunTot1 := TRFunction():New(oSectDad:Cell("QUANTIDADE"),,"SUM",,,"@E 99,999,999,999.999" )
-	oFunTot1:SetEndReport(.F.)
-	oFunTot2 := TRFunction():New(oSectDad:Cell("VLR_TOTAL"),,"SUM",,,"@E 99,999,999,999.99" )
-	oFunTot2:SetEndReport(.F.)
-    */
+	
 Return oReport
 	
 /*-------------------------------------------------------------------------------*

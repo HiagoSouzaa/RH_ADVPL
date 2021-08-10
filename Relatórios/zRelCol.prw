@@ -46,8 +46,6 @@ Static Function fReportDef()
 
 	Local oReport
 	Local oSectDad := Nil
-	Local oFunTot1 := Nil
-	Local oFunTot2 := Nil
 	
 	//Criação do componente de impressão
 	oReport := TReport():New(	"zRelCol",;		//Nome do Relatório
@@ -75,12 +73,6 @@ Static Function fReportDef()
 	TRCell():New(oSectDad, "ZCO_PIS"    , "QRY_AUX", "PIS"	         , GetSx3Cache("ZCO_PIS","X3_Picture")   , 15, /*lPixel*/,/*{|| code-block de impressao },/*cAlign*/,/*lLineBreak*/,/*cHeaderAlign */,/*lCellBreak*/,/*nColSpace*/,/*lAutoSize*/,/*nClrBack*/,/*nClrFore*/,/*lBold*/)
 	TRCell():New(oSectDad, "XX_MUN"     , "QRY_AUX", "Municipio"	 , GetSx3Cache("ZCO_MUN","X3_Picture")   , 30, /*lPixel*/,{|| QRY_AUX->ZCO_ESTADO + " - "+  POSICIONE("CC2",1,FWXFILIAL("CC2")+ QRY_AUX->ZCO_ESTADO+QRY_AUX->ZCO_MUN,"CC2_MUN")},/*cAlign*/,/*lLineBreak*/,/*cHeaderAlign */,/*lCellBreak*/,/*nColSpace*/,/*lAutoSize*/,/*nClrBack*/,/*nClrFore*/,/*lBold*/)
 	
-	/*Totalizadores
-	oFunTot1 := TRFunction():New(oSectDad:Cell("QUANTIDADE"),,"SUM",,,"@E 99,999,999,999.999" )
-	oFunTot1:SetEndReport(.F.)
-	oFunTot2 := TRFunction():New(oSectDad:Cell("VLR_TOTAL"),,"SUM",,,"@E 99,999,999,999.99" )
-	oFunTot2:SetEndReport(.F.)
-    */
 Return oReport
 	
 /*-------------------------------------------------------------------------------*

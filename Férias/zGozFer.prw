@@ -15,7 +15,7 @@
 
 //Variáveis Estáticas
 Static cTitulo  := "Gozo de Férias  "
-Static cDefault := "Gozo de Férias "
+
 
 User Function zGozFer()
 
@@ -98,7 +98,6 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZGF	:= ZGF->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZGOZFER") 

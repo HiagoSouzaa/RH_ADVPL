@@ -49,8 +49,6 @@ Local cAliasTmp := 'MZGOZFER_' + FWTimeStamp()
 local nDGozo    := fwfldGet("ZGF_DIGOZO") 
 Local cCpf      := fwfldGet("ZGF_CPF")
 local nDiaSal   := 0
-Local aDiaRes   := {}
-local aAreaZDF  := {}
 Local oModel := Nil
 local oZDFMod := NIL
 

@@ -17,7 +17,6 @@
 
 //Variáveis Estáticas
 Static cTitulo  := "Direito de Férias "
-Static cDefault := "Direito de Férias"
 
 User Function zDirFer()
 
@@ -95,7 +94,6 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZZ1	:= ZDF->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZDIRFER") 

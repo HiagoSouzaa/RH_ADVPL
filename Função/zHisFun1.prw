@@ -13,7 +13,6 @@
 
 //Variáveis Estáticas
 Static cTitulo  := "Historico da Função"
-Static cDefault := "Historico DE FUNÇÃO"
 
 User Function zHisFun1()
 
@@ -91,7 +90,6 @@ Return(oModel)
 
 Static Function ViewDef()
 
-	Local aStruZHF	:= ZHF->(DbStruct())
 	Local oView    := Nil
 	Local nView    := 2
 	Local oModel   := FWLoadModel("ZHISFUN1") 
